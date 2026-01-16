@@ -402,7 +402,7 @@ class OpenSanctionsClient:
         This helper extracts just the first value or None.
         """
         values = props.get(key, [])
-        return values[0] if values else None
+        return str(values[0]) if values else None
     
     def get_dataset_stats(self, filepath: Path) -> dict:
         """
