@@ -5,8 +5,7 @@
   "features": {
     "ghcr.io/devcontainers/features/node:1": {
       "version": "20"
-    },
-    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+    }
   },
 
   "customizations": {
@@ -18,46 +17,33 @@
         "ms-toolsai.jupyter",
         "redhat.vscode-yaml",
         "tamasfe.even-better-toml",
-        "mechatroner.rainbow-csv",
-        "GrapeCity.gc-excelviewer"
+        "mechatroner.rainbow-csv"
       ],
       "settings": {
-        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
         "python.terminal.activateEnvironment": true,
+        "terminal.integrated.defaultProfile.linux": "bash",
         "editor.formatOnSave": true,
-        "editor.codeActionsOnSave": {
-          "source.fixAll": "explicit",
-          "source.organizeImports": "explicit"
-        },
         "[python]": {
           "editor.defaultFormatter": "charliermarsh.ruff"
-        },
-        "ruff.lint.args": ["--config=pyproject.toml"],
-        "ruff.format.args": ["--config=pyproject.toml"]
+        }
       }
     }
   },
 
   "postCreateCommand": "bash .devcontainer/setup.sh",
   
+  "postStartCommand": "source .venv/bin/activate 2>/dev/null || true",
+
   "forwardPorts": [3000, 5432, 7474, 7687],
-  
-  "portsAttributes": {
-    "3000": { "label": "Dagster UI" },
-    "5432": { "label": "PostgreSQL" },
-    "7474": { "label": "Neo4j Browser" },
-    "7687": { "label": "Neo4j Bolt" }
-  },
 
   "containerEnv": {
     "PYTHONPATH": "${containerWorkspaceFolder}/src",
     "PYTHONDONTWRITEBYTECODE": "1",
-    "PYTHONUNBUFFERED": "1"
+    "PYTHONUNBUFFERED": "1",
+    "VIRTUAL_ENV": "${containerWorkspaceFolder}/.venv",
+    "PATH": "${containerWorkspaceFolder}/.venv/bin:${PATH}"
   },
-
-  "mounts": [
-    "source=${localWorkspaceFolder}/data,target=/workspaces/sanctions-network-mapper/data,type=bind,consistency=cached"
-  ],
 
   "remoteUser": "vscode"
 }
