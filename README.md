@@ -1,6 +1,6 @@
 # Sanctions Network Mapper
 
-A powerful intelligence analysis tool for exploring global sanctions data. Cross-reference OFAC, EU, UN, and 100+ other sanctions lists to identify sanctioned entities, analyze ownership networks, and detect potential shell company structures.
+An intelligence analysis tool for exploring global sanctions data. Cross-reference OFAC, EU, UN, and 100+ other sanctions lists to identify sanctioned entities, analyze ownership networks, and detect potential shell company structures.
 
 ---
 
@@ -22,7 +22,7 @@ A powerful intelligence analysis tool for exploring global sanctions data. Cross
 ## Quick Start
 
 ```bash
-# 1. Install dependencies (automatic in Codespaces)
+# 1. Install dependencies (Should be automatic in Codespaces, alas it is not at the moment)
 uv venv && source .venv/bin/activate && uv pip install -e .
 
 # 2. Download sanctions data (~500MB, takes 2-5 minutes)
@@ -105,7 +105,7 @@ You'll see `(.venv)` at the start of your terminal prompt when activated.
 #### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/sanctions-network-mapper.git
+git clone https://github.com/M-Schroeder13/sanctions-network-mapper.git
 cd sanctions-network-mapper
 ```
 
